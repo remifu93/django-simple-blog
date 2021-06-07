@@ -36,6 +36,7 @@ PROJECT_APPS = [
 
 THIRD_PARTY_APPS = [
     'bootstrap4',
+    'django_bootstrap_icons',
 ]
 
 DJANGO_APPS = [

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% load bootstrap_icons %}
+
+{% block content %} 
+    <div class="row"> 
+        {% include 'home/nav.html' %}             
+        {% for post in posts %}   
+            <div class="col-sm-6 mt-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{post.title}}</h5>
+                        <p class="card-text">
+                            {% if post.content|length > 200 %}
+                                {{post.content|slice:200}}...
+                            {% else %}
+                                {{post.content}}
+                            {% endif %} 
+                        </p>
+                        <div class="d-flex justify-content-end">
+                            <a href="{% url 'home:detail' post.id %}" class="btn btn-sm btn-outline-secondary">Ver</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-secondary mt-3">Nada que mostrar...</p>
+        {% endfor %}
+    </div>
+
+    {% if is_paginated %}
+        <div>   
+            <ul class="pagination pagination-sm justify-content-center mt-4 mb-0">
+                
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                            {% bs_icon 'arrow-bar-left' extra_classes="link-secondary" %}
+                        </a>
+                    </li>
+                {% endif %}
+
+                <li class="page-item disabled">
+                    <span class="page-link">{{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+                </li>
+
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                            {% bs_icon 'arrow-bar-right' extra_classes="link-secondary" %}
+                        </a>
+                    </li>     
+                {% endif %}
+
+            </ul>
+        </div>
+{% endif %}
+
+{% endblock content %}
+ 

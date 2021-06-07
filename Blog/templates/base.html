@@ -13,30 +13,27 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler my-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="{% url 'home:root' %}">Blog Simple</a>
+            <a class="navbar-brand" href="{% url 'home:list' %}">Blog Simple</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'home:root' %}">Posts</a>
-              </li>
             </ul>
             <form class="d-flex" method="GET" action="">
               <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search" name="kword">
-              <button class="btn btn-outline-success" type="submit">Buscar</button>
+              <button class="btn btn-outline-secondary" type="submit">Buscar</button>
             </form>
           </div>
         </div>
       </nav>
 
-    <div class="container mt-3">
+    <div class="container">
         {% block content %}
         {% endblock content %}
     </div>
     
-        
+ 
     {% bootstrap_javascript %}
 </body>
 </html>
