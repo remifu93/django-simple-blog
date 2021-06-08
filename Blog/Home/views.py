@@ -1,6 +1,3 @@
-from typing import List
-from django.http import request
-from django.shortcuts import render
 from django.db.models import Q
 from django.views.generic import ListView, DetailView, CreateView
 from django.views.generic.edit import FormMixin

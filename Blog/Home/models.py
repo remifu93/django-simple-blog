@@ -1,6 +1,7 @@
-from typing import OrderedDict
 from django.db import models
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
+from django.db.models.fields import CharField
 
 
 class Category(models.Model):
@@ -17,7 +18,8 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField('Titulo', max_length=50)
-    content = models.TextField('Contenido')
+    description = models.TextField(max_length=200)
+    content = RichTextField('Contenido')
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)

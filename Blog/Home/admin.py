@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.contrib.admin.options import ModelAdmin
+from django.contrib.admin.sites import AdminSite
 from .models import Category, Post, Comment
 
 
@@ -13,11 +15,12 @@ class Admin(admin.ModelAdmin):
 
 @admin.register(Post)
 class Admin(admin.ModelAdmin):
-    list_display = ('title', 'category', 'created_by', 'created_at', 'updated_at',)
-    list_filter = ('title', 'category', 'created_by',)
-    search_fields = ('title', 'category', 'created_by', 'created_at',)
+    list_display = ('title', 'description', 'category', 'created_by', 'created_at', 'updated_at',)
+    list_filter = ('title', 'description', 'category', 'created_by',)
+    search_fields = ('title', 'description', 'category', 'created_by', 'created_at',)
     date_hierarchy = 'created_at'
     ordering = ('created_at', 'updated_at',)
+
 
 @admin.register(Comment)
 class Admin(admin.ModelAdmin):

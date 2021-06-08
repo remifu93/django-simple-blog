@@ -20,7 +20,7 @@
             <a class="navbar-brand" href="{% url 'home:list' %}">Blog Simple</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             </ul>
-            <form class="d-flex" method="GET" action="">
+            <form class="d-flex" method="GET" action="{% url 'home:list' %}">
               <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search" name="kword">
               <button class="btn btn-outline-secondary" type="submit">Buscar</button>
             </form>

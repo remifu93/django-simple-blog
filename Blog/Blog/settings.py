@@ -37,6 +37,7 @@ PROJECT_APPS = [
 THIRD_PARTY_APPS = [
     'bootstrap4',
     'django_bootstrap_icons',
+    'ckeditor',
 ]
 
 DJANGO_APPS = [
@@ -166,4 +167,17 @@ BOOTSTRAP4 = {
     # Include jQuery with Bootstrap JavaScript False|falsy|slim|full (default=False)
     # False - means tag bootstrap_javascript use default value - `falsy` and does not include jQuery)
     'include_jquery': False,
+}
+
+# CKEditor Configs
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', 'Source']
+        ]
+    }
 }
