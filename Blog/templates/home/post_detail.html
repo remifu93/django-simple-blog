@@ -6,4 +6,24 @@
     <h1 class="mt-3">{{post.title}}</h1>
     <hr>
     <p class="mt-3">{{post.content}}</p>
+    <hr>
+    <h5>Comentarios</h5>
+    <hr> 
+
+    {% for comment in comments %}
+        <p><strong>{{comment.created_by}} ({{comment.created_at}}):</strong></p>
+        <p>{{comment.title}}</p>
+        <p>{{comment.content}}</p>
+        <hr>
+    {% endfor %}
+        
+
+    <form method="POST">
+        <div class="form-group">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="form-control btn btn-secondary" type="submit">Comentar</button>
+        </div>
+    </form>
+
 {% endblock content %}

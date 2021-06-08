@@ -37,7 +37,7 @@
                 {% if page_obj.has_previous %}
                     <li class="page-item">
                         <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
-                            {% bs_icon 'arrow-bar-left' extra_classes="link-secondary" %}
+                            {% bs_icon 'arrow-left' extra_classes="link-secondary" %}
                         </a>
                     </li>
                 {% endif %}
@@ -49,7 +49,7 @@
                 {% if page_obj.has_next %}
                     <li class="page-item">
                         <a class="page-link" href="?page={{ page_obj.next_page_number }}">
-                            {% bs_icon 'arrow-bar-right' extra_classes="link-secondary" %}
+                            {% bs_icon 'arrow-right' extra_classes="link-secondary" %}
                         </a>
                     </li>     
                 {% endif %}

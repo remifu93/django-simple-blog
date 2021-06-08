@@ -1,4 +1,7 @@
 <ul class="nav">
+    <li class="nav-item">
+        <a class="nav-link link-secondary" href="{% url 'home:list' %}">Posts</a>
+    </li>
     {% for category in categories %}  
         <li class="nav-item">
             <a class="nav-link link-secondary" href="{% url 'home:list' %}?category={{category.name}}">{{category.name}}</a>

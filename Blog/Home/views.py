@@ -1,8 +1,11 @@
+from typing import List
 from django.http import request
 from django.shortcuts import render
 from django.db.models import Q
-from django.views.generic import ListView, DetailView
-from .models import Category, Post
+from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic.edit import FormMixin
+from .models import Category, Post, Comment
+from .forms import CommentForm
 
 
 class HomeListView(ListView):
@@ -32,7 +35,32 @@ class HomeListView(ListView):
         return queryset
 
 
-class HomeDetailView(DetailView):
+class HomeDetailView(FormMixin, DetailView):
     model = Post
     template_name = "home/post_detail.html"
+    form_class = CommentForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = CommentForm()
+        context['comments'] = self.object.comment_set.all()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()        
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.post = self.object
+        obj.created_by = self.request.user
+        obj.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return self.request.path
 
